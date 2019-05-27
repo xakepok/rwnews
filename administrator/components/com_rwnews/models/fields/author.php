@@ -3,9 +3,9 @@ defined('_JEXEC') or die;
 jimport('joomla.form.helper');
 JFormHelper::loadFieldClass('list');
 
-class JFormFieldCategories extends JFormFieldList
+class JFormFieldAuthor extends JFormFieldList
 {
-    protected $type = 'Categories';
+    protected $type = 'Author';
     protected $loadExternally = 0;
 
     protected function getOptions()
@@ -13,9 +13,9 @@ class JFormFieldCategories extends JFormFieldList
         $db =& JFactory::getDbo();
         $query = $db->getQuery(true);
         $query
-            ->select("`id`, `title`")
-            ->from("`#__rwnews_categories`")
-            ->order("title");
+            ->select("`id`, `name`")
+            ->from("`#__users`")
+            ->order("name");
         $result = $db->setQuery($query)->loadObjectList();
 
         $options = array();

@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<form addrulepath="/administrator/components/com_rwnews/models/rules">
+    <fields name="filter">
+        <field
+                name="search"
+                type="text"
+                label="COM_RWNEWS_FILTER_ARTICLE_TITLE"
+                description="COM_RWNEWS_FILTER_ARTICLE_TITLE"
+                hint="COM_RWNEWS_FILTER_ARTICLE_TITLE"
+                autocomplete="off"
+                class="js-stools-search-string"
+        />
+        <field
+                name="category"
+                type="Cat"
+                label="COM_RWNEWS_FILTER_SELECT_CATEGORY"
+                description="COM_RWNEWS_FILTER_SELECT_CATEGORY_DESC"
+                onchange="this.form.submit();"
+                >
+            <option value="">COM_RWNEWS_FILTER_SELECT_CATEGORY</option>
+        </field>
+        <field
+                name="author"
+                type="Author"
+                label="COM_RWNEWS_FILTER_SELECT_AUTHOR"
+                description="COM_RWNEWS_FILTER_SELECT_AUTHOR_DESC"
+                onchange="this.form.submit();"
+                >
+            <option value="">COM_RWNEWS_FILTER_SELECT_AUTHOR</option>
+        </field>
+    </fields>
+    <fields name="list">
+        <field
+                name="fullordering"
+                type="list"
+                label="COM_RWNEWS_FILTER_SELECT_FULL_ORDERING"
+                description="COM_RWNEWS_FILTER_SELECT_FULL_ORDERING_DESC"
+                onchange="this.form.submit();"
+                default="n.title ASC"
+                >
+            <option value="">JGLOBAL_SORT_BY</option>
+            <option value="n.title ASC">COM_RWNEWS_SORT_NAME_ASC</option>
+            <option value="n.title DESC">COM_RWNEWS_SORT_NAME_DESC</option>
+            <option value="n.dat ASC">COM_RWNEWS_SORT_DAT_ASC</option>
+            <option value="n.dat DESC">COM_RWNEWS_SORT_DAT_DESC</option>
+            <option value="category ASC">COM_RWNEWS_SORT_CATEGORY_ASC</option>
+            <option value="category DESC">COM_RWNEWS_SORT_CATEGORY_DESC</option>
+            <option value="author ASC">COM_RWNEWS_SORT_AUTHOR_ASC</option>
+            <option value="author DESC">COM_RWNEWS_SORT_AUTHOR_DESC</option>
+            <option value="n.published ASC">COM_RWNEWS_SORT_PUBLISHED_ASC</option>
+            <option value="n.published DESC">COM_RWNEWS_SORT_PUBLISHED_DESC</option>
+            <option value="n.id ASC">COM_RWNEWS_SORT_ID_ASC</option>
+            <option value="n.id DESC">COM_RWNEWS_SORT_ID_DESC</option>
+        </field>
+        <field
+                name="limit"
+                type="limitbox"
+                class="input-mini"
+                default="0"
+                label="COM_RWNEWS_FILTER_SELECT_LIMIT"
+                description="COM_RWNEWS_FILTER_SELECT_LIMIT_DESC"
+                onchange="this.form.submit();"
+        />
+    </fields>
+</form>

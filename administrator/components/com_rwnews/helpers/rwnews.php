@@ -7,7 +7,7 @@ class RwnewsHelper
 {
 	public function addSubmenu($vName)
 	{
-        JHtmlSidebar::addEntry(Text::_('COM_RWNEWS_MENU_NEWS'), 'index.php?option=com_rwnews&view=news', $vName == 'news');
+        JHtmlSidebar::addEntry(Text::_('COM_RWNEWS_MENU_NEWS'), 'index.php?option=com_rwnews&view=articles', $vName == 'articles');
         JHtmlSidebar::addEntry(Text::_('COM_RWNEWS_MENU_CATEGORIES'), 'index.php?option=com_rwnews&view=categories', $vName == 'categories');
 	}
 
