@@ -12,4 +12,13 @@ class TableRwnewsStations extends Table
 	{
 		parent::__construct('#__rwnews_stations', 'id', $db);
 	}
+
+    public function bind($src, $ignore = array())
+    {
+        foreach ($src as $field => $value)
+        {
+            if (isset($this->$field)) $this->$field = $value;
+        }
+        return parent::bind($src, $ignore);
+    }
 }

@@ -11,6 +11,8 @@ class TableRwnewsNews extends Table
     var $title = null;
     var $text = null;
     var $dat = null;
+    var $img_prev = null;
+    var $img_full = null;
     var $published = null;
 	public function __construct(JDatabaseDriver $db)
 	{

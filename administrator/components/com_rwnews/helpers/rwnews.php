@@ -1,5 +1,4 @@
 <?php
-use Joomla\CMS\Language\Text;
 
 defined('_JEXEC') or die;
 
@@ -7,10 +6,36 @@ class RwnewsHelper
 {
 	public function addSubmenu($vName)
 	{
-        JHtmlSidebar::addEntry(Text::_('COM_RWNEWS_MENU_NEWS'), 'index.php?option=com_rwnews&view=articles', $vName == 'articles');
-        JHtmlSidebar::addEntry(Text::_('COM_RWNEWS_MENU_CATEGORIES'), 'index.php?option=com_rwnews&view=categories', $vName == 'categories');
+        JHtmlSidebar::addEntry(JText::sprintf('COM_RWNEWS_MENU_NEWS'), 'index.php?option=com_rwnews&view=articles', $vName == 'articles');
+        JHtmlSidebar::addEntry(JText::sprintf('COM_RWNEWS_MENU_CATEGORIES'), 'index.php?option=com_rwnews&view=categories', $vName == 'categories');
 	}
 
+    /**
+     * @param int $newsID ID новости
+     * @param bool $full отображать полную информацию о станции
+     * @return array
+     * @since version 1.0.0.2
+     */
+    public static function getNewsStations(int $newsID = 0, bool $full = false): array
+    {
+        if ($newsID == 0) return array();
+        $db =& JFactory::getDbo();
+        $query = $db->getQuery(true);
+        $query
+            ->select("ns.stationID")
+            ->from("`#__rwnews_stations` ns")
+            ->where("`newsID` = {$newsID}");
+        if (!$full) {
+            return $db->setQuery($query)->loadColumn() ?? array();
+        }
+        else
+        {
+            $query
+                ->select("s.title")
+                ->leftJoin("`#__rw_stations` s on s.id=ns.stationID");
+            return $db->setQuery($query)->loadAssocList() ?? array();
+        }
+	}
 
     /**
      * Возвращает URL для обработки формы

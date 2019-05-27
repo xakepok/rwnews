@@ -35,6 +35,20 @@ HTMLHelper::_('stylesheet', 'com_rwnews/style.css', array('version' => 'auto', '
                     </div>
                 </div>
                 <?php echo JHtml::_('bootstrap.endTab'); ?>
+                <?php echo JHtml::_('bootstrap.addTab', 'myTab', 'images', JText::sprintf('COM_RWNEWS_BLANK_ARTICLE_IMAGES')); ?>
+                <div class="row-fluid">
+                    <div class="span6">
+                        <div>
+                            <?php echo $this->loadTemplate('images'); ?>
+                        </div>
+                    </div>
+                    <div class="span6">
+                        <div>
+
+                        </div>
+                    </div>
+                </div>
+                <?php echo JHtml::_('bootstrap.endTab'); ?>
             </div>
             <?php echo JHtml::_('bootstrap.endTabSet'); ?>
         </div>

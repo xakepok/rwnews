@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<form addrulepath="/administrator/components/com_rwnews/models/rules">
+<form addrulepath="/administrator/components/com_rwnews/models/rules" addfieldpath="/administrator/components/com_rw/models/fields">
     <fieldset name="general">
         <field
                 name="id"
@@ -20,7 +20,7 @@
                 filter="safehtml"
                 label="COM_RWNEWS_FORM_ARTICLE_TEXT"
                 description="COM_RWNEWS_FORM_ARTICLE_TEXT_DESC"
-                />
+        />
     </fieldset>
     <fieldset name="params">
         <field name="catID"
@@ -45,5 +45,28 @@
                >
             <option value="">COM_RWNEWS_FILTER_SELECT_AUTHOR</option>
         </field>
+        <field name="stations"
+               type="Station"
+               label="COM_RWNEWS_FORM_ARTICLE_STATIONS"
+               description="COM_RWNEWS_FORM_ARTICLE_STATIONS_DESC"
+               class="inputbox span-12"
+               multiple="true"
+               />
+    </fieldset>
+    <fieldset name="images">
+        <field name="img_prev"
+               type="text"
+               label="COM_RWNEWS_FORM_ARTICLE_IMG_PREV"
+               description="COM_RWNEWS_FORM_ARTICLE_IMG_PREV_DESC"
+               autocomplete="off"
+               class="inputbox span12"
+        />
+        <field name="img_full"
+               type="text"
+               label="COM_RWNEWS_FORM_ARTICLE_IMG_FULL"
+               description="COM_RWNEWS_FORM_ARTICLE_IMG_FULL_DESC"
+               autocomplete="off"
+               class="inputbox span12"
+        />
     </fieldset>
 </form>
