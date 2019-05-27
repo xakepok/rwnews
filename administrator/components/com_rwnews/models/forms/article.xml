@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<form addrulepath="/administrator/components/com_rwnews/models/rules">
+    <fieldset name="general">
+        <field
+                name="id"
+                type="hidden"
+        />
+        <field
+                name="title"
+                type="text"
+                label="COM_RWNEWS_FORM_ARTICLE_TITLE"
+                description="COM_RWNEWS_FORM_ARTICLE_TITLE_DESC"
+                required="true"
+                autocomplete="off"
+                class="inputbox span12"
+        />
+        <field
+                name="text"
+                type="editor"
+                filter="safehtml"
+                label="COM_RWNEWS_FORM_ARTICLE_TEXT"
+                description="COM_RWNEWS_FORM_ARTICLE_TEXT_DESC"
+                />
+    </fieldset>
+    <fieldset name="params">
+        <field name="catID"
+               type="Cat"
+               label="COM_RWNEWS_FORM_ARTICLE_CATEGORY"
+               description="COM_RWNEWS_FORM_ARTICLE_CATEGORY_DESC"
+               required="true"
+               autocomplete="off"
+               class="inputbox span-12"
+               default=""
+               >
+            <option value="">COM_RWNEWS_FILTER_SELECT_CATEGORY</option>
+        </field>
+        <field name="authorID"
+               type="Author"
+               label="COM_RWNEWS_FORM_ARTICLE_AUTHOR"
+               description="COM_RWNEWS_FORM_ARTICLE_AUTHOR_DESC"
+               required="true"
+               autocomplete="off"
+               class="inputbox span-12"
+               default=""
+               >
+            <option value="">COM_RWNEWS_FILTER_SELECT_AUTHOR</option>
+        </field>
+    </fieldset>
+</form>
