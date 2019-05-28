@@ -95,7 +95,7 @@ class RwnewsModelArticle extends AdminModel {
 
     protected function prepareTable($table)
     {
-        $nulls = array('text', 'img_prev', 'img_full'); //Поля, которые NULL
+        $nulls = array('text', 'img_prev', 'img_full', 'link_original', 'link_group'); //Поля, которые NULL
         foreach ($nulls as $field)
         {
             if (!strlen($table->$field)) $table->$field = NULL;

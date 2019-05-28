@@ -1,33 +1,25 @@
 <?php
-/**
- * @package    rwnews
- *
- * @author     anton@nazvezde.ru <your@email.com>
- * @copyright  A copyright
- * @license    GNU General Public License version 2 or later; see LICENSE.txt
- * @link       http://your.url.com
- */
-
 use Joomla\CMS\Table\Table;
 
 defined('_JEXEC') or die;
 
-/**
- * Rwnews table.
- *
- * @since       1.0
- */
-class TableRwnews extends Table
+class TableRwnewsRwnews extends Table
 {
-	/**
-	 * Constructor
-	 *
-	 * @param   JDatabaseDriver  $db  Database driver object.
-	 *
-	 * @since   1.0
-	 */
+    var $id = null;
+    var $catID = null;
+    var $authorID = null;
+    var $title = null;
+    var $text = null;
+    var $dat = null;
+    var $img_prev = null;
+    var $img_full = null;
+    var $link_original = null;
+    var $link_group = null;
+    var $published = null;
+    var $category = null;
+    var $user = null;
 	public function __construct(JDatabaseDriver $db)
 	{
-		parent::__construct('#__rwnews_items', 'item_id', $db);
+		parent::__construct('#__rwnews', 'id', $db);
 	}
 }

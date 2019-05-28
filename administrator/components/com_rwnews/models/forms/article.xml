@@ -69,4 +69,20 @@
                class="inputbox span12"
         />
     </fieldset>
+    <fieldset name="links">
+        <field name="link_original"
+               type="url"
+               label="COM_RWNEWS_FORM_ARTICLE_LINK_ORIGINAL"
+               description="COM_RWNEWS_FORM_ARTICLE_LINK_ORIGINAL_DESC"
+               autocomplete="off"
+               class="inputbox span12"
+        />
+        <field name="link_group"
+               type="url"
+               label="COM_RWNEWS_FORM_ARTICLE_LINK_GROUP"
+               description="COM_RWNEWS_FORM_ARTICLE_LINK_GROUP_DESC"
+               autocomplete="off"
+               class="inputbox span12"
+        />
+    </fieldset>
 </form>

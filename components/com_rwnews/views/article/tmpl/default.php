@@ -9,7 +9,7 @@ HTMLHelper::_('stylesheet', 'com_rwnews/style.css', array('version' => 'auto', '
 
 <div>
     <h2><?php echo $this->item->title;?></h2>
-    <?php echo $this->item->author;?>
+    <?php echo JText::sprintf("%s, %s", $this->item->user, JDate::getInstance($this->item->dat)->format("d.m.Y"));?>
 </div>
 <?php if ($this->item->img_full): ?>
 <div class="center">
@@ -18,4 +18,7 @@ HTMLHelper::_('stylesheet', 'com_rwnews/style.css', array('version' => 'auto', '
 <?php endif;?>
 <div>
     <?php echo $this->item->text;?>
+</div>
+<div style="text-align: right;">
+    <?php echo $this->item->links;?>
 </div>

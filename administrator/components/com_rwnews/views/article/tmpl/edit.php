@@ -44,7 +44,7 @@ HTMLHelper::_('stylesheet', 'com_rwnews/style.css', array('version' => 'auto', '
                     </div>
                     <div class="span6">
                         <div>
-
+                            <?php echo $this->loadTemplate('links'); ?>
                         </div>
                     </div>
                 </div>
