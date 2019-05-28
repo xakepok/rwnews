@@ -35,7 +35,7 @@
             <option value="">COM_RWNEWS_FILTER_SELECT_CATEGORY</option>
         </field>
         <field name="authorID"
-               type="Author"
+               type="Authornews"
                label="COM_RWNEWS_FORM_ARTICLE_AUTHOR"
                description="COM_RWNEWS_FORM_ARTICLE_AUTHOR_DESC"
                required="true"

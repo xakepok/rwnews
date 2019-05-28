@@ -3,9 +3,9 @@ defined('_JEXEC') or die;
 jimport('joomla.form.helper');
 JFormHelper::loadFieldClass('list');
 
-class JFormFieldAuthor extends JFormFieldList
+class JFormFieldAuthornews extends JFormFieldList
 {
-    protected $type = 'Author';
+    protected $type = 'Authornews';
     protected $loadExternally = 0;
 
     protected function getOptions()
@@ -21,7 +21,7 @@ class JFormFieldAuthor extends JFormFieldList
         $options = array();
 
         foreach ($result as $item) {
-            $options[] = JHtml::_('select.option', $item->id, $item->title);
+            $options[] = JHtml::_('select.option', $item->id, $item->name);
         }
 
         if (!$this->loadExternally) {
