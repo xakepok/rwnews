@@ -52,6 +52,13 @@
                class="inputbox span-12"
                multiple="true"
                />
+        <field name="directions"
+               type="Direction"
+               label="COM_RWNEWS_FORM_ARTICLE_DIRECTIONS"
+               description="COM_RWNEWS_FORM_ARTICLE_DIRECTIONS_DESC"
+               class="inputbox span-12"
+               multiple="true"
+               />
     </fieldset>
     <fieldset name="images">
         <field name="img_prev"

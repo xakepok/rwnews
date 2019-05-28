@@ -26,7 +26,22 @@ class RwnewsModelArticle extends ItemModel
         if ($table->link_original != null) $links['original'] = JHtml::link($table->link_original, JText::sprintf('COM_RWNEWS_ARTICLE_LINK_ORIGINAL'), $attribs);
         if ($table->link_group != null) $links['group'] = JHtml::link($table->link_group, JText::sprintf('COM_RWNEWS_ARTICLE_LINK_GROUP'), $attribs);
         $table->links = implode(' / ', $links);
+        $table->assets = implode(' / ', $this->getAssets());
         return $table;
+    }
+
+    private function getAssets(): array
+    {
+        $assets = array();
+        $stations = RwnewsHelper::getNewsStations($this->id, true);
+        foreach ($stations as $station) {
+            $assets[] = JHtml::link(JRoute::_("index.php?option=com_rw&amp;view=station&amp;id={$station['stationID']}"), $station['title']);
+        }
+        $directions = RwnewsHelper::getNewsDirections($this->id, true);
+        foreach ($directions as $direction) {
+            $assets[] = JHtml::link(JRoute::_("index.php?option=com_rw&amp;view=direction&amp;id={$direction['directionID']}"), JText::sprintf('COM_RWNEWS_ARTICLE_LINK_DIRECTION_NAME', $direction['title']));
+        }
+        return $assets;
     }
 
     public $id;

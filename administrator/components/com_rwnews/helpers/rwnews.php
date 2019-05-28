@@ -11,6 +11,7 @@ class RwnewsHelper
 	}
 
     /**
+     * Возвращает массив станций, к которым привязана новость
      * @param int $newsID ID новости
      * @param bool $full отображать полную информацию о станции
      * @return array
@@ -33,6 +34,34 @@ class RwnewsHelper
             $query
                 ->select("s.title")
                 ->leftJoin("`#__rw_stations` s on s.id=ns.stationID");
+            return $db->setQuery($query)->loadAssocList() ?? array();
+        }
+	}
+
+    /**
+     * Возвращает массив направлений, к которым привязана новость
+     * @param int $newsID ID новости
+     * @param bool $full отображать полную информацию о направлении
+     * @return array
+     * @since version 1.0.0.4
+     */
+    public static function getNewsDirections(int $newsID = 0, bool $full = false): array
+    {
+        if ($newsID == 0) return array();
+        $db =& JFactory::getDbo();
+        $query = $db->getQuery(true);
+        $query
+            ->select("nd.directionID")
+            ->from("`#__rwnews_directions` nd")
+            ->where("`newsID` = {$newsID}");
+        if (!$full) {
+            return $db->setQuery($query)->loadColumn() ?? array();
+        }
+        else
+        {
+            $query
+                ->select("d.title")
+                ->leftJoin("`#__rw_directions` d on d.id=nd.directionID");
             return $db->setQuery($query)->loadAssocList() ?? array();
         }
 	}
