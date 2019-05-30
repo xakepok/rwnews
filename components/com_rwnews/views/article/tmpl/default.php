@@ -19,9 +19,9 @@ HTMLHelper::_('stylesheet', 'com_rwnews/style.css', array('version' => 'auto', '
 <div>
     <?php echo $this->item->text;?>
 </div>
-<div style="text-align: right;">
-    <?php echo $this->item->links;?>
+<div>
+    <?php echo $this->loadTemplate('links');?>
 </div>
-<div style="text-align: right;">
-    <?php echo $this->item->assets;?>
+<div>
+    <?php echo $this->loadTemplate('assets');?>
 </div>

@@ -22,11 +22,14 @@ class RwnewsModelArticle extends ItemModel
         $table->load($this->id);
         $table->image = (!JFactory::getApplication()->client->mobile) ? $table->img_full : $table->img_prev;
         $links = array();
-        $attribs = array('target' => '_blank');
-        if ($table->link_original != null) $links['original'] = JHtml::link($table->link_original, JText::sprintf('COM_RWNEWS_ARTICLE_LINK_ORIGINAL'), $attribs);
-        if ($table->link_group != null) $links['group'] = JHtml::link($table->link_group, JText::sprintf('COM_RWNEWS_ARTICLE_LINK_GROUP'), $attribs);
-        $table->links = implode(' / ', $links);
-        $table->assets = implode(' / ', $this->getAssets());
+        if ($table->link_original != null) {
+            $links['original'] = array('url' => $table->link_original, 'text' => JText::sprintf('COM_RWNEWS_ARTICLE_LINK_ORIGINAL'));
+        }
+        if ($table->link_group != null) {
+            $links['group'] = array('url' => $table->link_group, 'text' => JText::sprintf('COM_RWNEWS_ARTICLE_LINK_GROUP'));
+        }
+        $table->links = $links;
+        $table->assets = $this->getAssets();
         return $table;
     }
 
@@ -35,11 +38,17 @@ class RwnewsModelArticle extends ItemModel
         $assets = array();
         $stations = RwnewsHelper::getNewsStations($this->id, true);
         foreach ($stations as $station) {
-            $assets[] = JHtml::link(JRoute::_("index.php?option=com_rw&amp;view=station&amp;id={$station['stationID']}"), $station['title']);
+            $assets[] = array(
+                'url' => JRoute::_("index.php?option=com_rw&amp;view=station&amp;id={$station['stationID']}"),
+                'text' => $station['title']
+            );
         }
         $directions = RwnewsHelper::getNewsDirections($this->id, true);
         foreach ($directions as $direction) {
-            $assets[] = JHtml::link(JRoute::_("index.php?option=com_rw&amp;view=direction&amp;id={$direction['directionID']}"), JText::sprintf('COM_RWNEWS_ARTICLE_LINK_DIRECTION_NAME', $direction['title']));
+            $assets[] = array(
+                'url' => JRoute::_("index.php?option=com_rw&amp;view=direction&amp;id={$direction['directionID']}"),
+                'text' => JText::sprintf('COM_RWNEWS_ARTICLE_LINK_DIRECTION_NAME', $direction['title'])
+            );
         }
         return $assets;
     }
