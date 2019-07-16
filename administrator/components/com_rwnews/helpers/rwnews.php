@@ -10,6 +10,11 @@ class RwnewsHelper
         JHtmlSidebar::addEntry(JText::sprintf('COM_RWNEWS_MENU_CATEGORIES'), 'index.php?option=com_rwnews&view=categories', $vName == 'categories');
 	}
 
+    public static function isMobile(): bool
+    {
+        return JFactory::getApplication()->client->mobile;
+	}
+
     /**
      * Возвращает массив станций, к которым привязана новость
      * @param int $newsID ID новости

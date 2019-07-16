@@ -37,16 +37,18 @@ class RwnewsModelArticle extends ItemModel
     {
         $assets = array();
         $stations = RwnewsHelper::getNewsStations($this->id, true);
+        $itemID = RwHelper::getMenuItemId('station');
         foreach ($stations as $station) {
             $assets[] = array(
-                'url' => JRoute::_("index.php?option=com_rw&amp;view=station&amp;id={$station['stationID']}"),
+                'url' => JRoute::_("index.php?option=com_rw&amp;view=station&amp;id={$station['stationID']}&amp;Itemid={$itemID}"),
                 'text' => $station['title']
             );
         }
         $directions = RwnewsHelper::getNewsDirections($this->id, true);
+        $itemID = RwHelper::getMenuItemId('direction');
         foreach ($directions as $direction) {
             $assets[] = array(
-                'url' => JRoute::_("index.php?option=com_rw&amp;view=direction&amp;id={$direction['directionID']}"),
+                'url' => JRoute::_("index.php?option=com_rw&amp;view=direction&amp;id={$direction['directionID']}&amp;Itemid={$itemID}"),
                 'text' => JText::sprintf('COM_RWNEWS_ARTICLE_LINK_DIRECTION_NAME', $direction['title'])
             );
         }
