@@ -26,6 +26,7 @@ HTMLHelper::_('script', 'com_rwnews/script.js', array('version' => 'auto', 'rela
             </table>
             <input type="hidden" name="task" value=""/>
             <input type="hidden" name="boxchecked" value="0"/>
+            <?php echo JHtml::_('form.token');?>
         </form>
     </div>
 </div>
