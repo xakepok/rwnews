@@ -1,5 +1,6 @@
 <?php
 use Joomla\CMS\MVC\View\HtmlView;
+use Joomla\Utilities\ArrayHelper;
 
 defined('_JEXEC') or die;
 
@@ -20,5 +21,13 @@ class RwnewsViewArticle extends HtmlView
             return;
         }
         $this->setDocumentTitle($this->item->title);
+        $itemID = RwHelper::getMenuItemID('news', 'com_rwnews');
+        $menu = JFactory::getApplication()->getMenu();
+        $url = JRoute::_("index.php?option=com_rwnews&amp;view=articles&amp;Itemid={$itemID}");
+        $items = array();
+        $items[] = array('name' => $menu->getItem($itemID)->title, 'link' => $url);
+        $items[] = array('name' => $this->item->title);
+        $items = ArrayHelper::toObject($items);
+        JFactory::getApplication()->getPathway()->setPathway($items);
     }
 }
