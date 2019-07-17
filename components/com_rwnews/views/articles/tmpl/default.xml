@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<metadata>
+	<layout title="COM_RWNEWS_MENU_ARTICLES">
+		<message>
+			<![CDATA[COM_RWNEWS_MENU_ARTICLES_DESC]]>
+		</message>
+	</layout>
+	<fieldset name="request" addfieldpath="/administrator/components/com_rwnews/models/fields">
+		<fields name="request">
+			<field
+					name="categoryID"
+					type="Cat"
+					default=""
+					label="COM_RWNEWS_MENU_ARTICLES_FILTER_CATEGORY"
+					description="COM_RWNEWS_MENU_ARTICLES_FILTER_CATEGORY_DESC"
+					>
+				<option value="">COM_RWNEWS_MENU_ARTICLES_FILTER_CATEGORY_ALL</option>
+			</field>
+		</fields>
+	</fieldset>
+</metadata>

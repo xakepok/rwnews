@@ -71,6 +71,12 @@ class RwnewsHelper
         }
 	}
 
+    public static function getParam(string $param, string $default = null, string $option = 'com_rwnews')
+    {
+        $config = JComponentHelper::getParams($option);
+        return $config->get($param, $default);
+	}
+
     /**
      * Возвращает URL для обработки формы
      * @return string

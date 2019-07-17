@@ -12,4 +12,9 @@ class TableRwnewsCategories extends Table
 	{
 		parent::__construct('#__rwnews_categories', 'id', $db);
 	}
+
+	public static function getInstance($type = 'Categories', $prefix = 'TableRwnews', $config = array())
+    {
+        return parent::getInstance($type, $prefix, $config);
+    }
 }

@@ -1,5 +1,52 @@
 <?xml version="1.0" encoding="utf-8"?>
 <config>
+	<fieldset name="news" label="COM_RWNEWS_CONFIG_NEWS_LIST" description="COM_RWNEWS_CONFIG_NEWS_LIST_DESC">
+		<field name="show_prev"
+			   type="radio"
+			   label="COM_RWNEWS_CONFIG_NEWS_SHOW_PREV"
+			   description="COM_RWNEWS_CONFIG_NEWS_SHOW_PREV_DESC"
+			   default="1"
+			   class="btn-group btn-group-yesno"
+			   component="com_rwnews"
+			   section="component"
+			   >
+			<option value="0">JNO</option>
+			<option value="1">JYES</option>
+		</field>
+		<field name="prev_length"
+			   type="number"
+			   label="COM_RWNEWS_CONFIG_NEWS_LENGTH_PREV"
+			   description="COM_RWNEWS_CONFIG_NEWS_LENGTH_PREV_DESC"
+			   default="100"
+			   min="50"
+			   hint="100"
+			   max="250"
+			   component="com_rwnews"
+			   section="component"
+		/>
+		<field name="prev_img_width"
+			   type="number"
+			   label="COM_RWNEWS_CONFIG_NEWS_IMG_PREV_WIDTH"
+			   description="COM_RWNEWS_CONFIG_NEWS_IMG_PREV_WIDTH_DESC"
+			   default="100"
+			   hint="100"
+			   min="32"
+			   max="256"
+			   component="com_rwnews"
+			   section="component"
+			   />
+		<field name="prev_img_height"
+			   type="number"
+			   label="COM_RWNEWS_CONFIG_NEWS_IMG_PREV_HEIGHT"
+			   description="COM_RWNEWS_CONFIG_NEWS_IMG_PREV_HEIGHT_DESC"
+			   default="70"
+			   hint="70"
+			   min="32"
+			   max="256"
+			   component="com_rwnews"
+			   section="component"
+			   />
+	</fieldset>
 	<fieldset name="permissions" label="JCONFIG_PERMISSIONS_LABEL" description="JCONFIG_PERMISSIONS_DESC">
 		<field name="rules"
 			   type="rules"

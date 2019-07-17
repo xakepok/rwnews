@@ -14,6 +14,7 @@ class RwnewsModelArticles extends ListModel
 
     protected function _getListQuery()
     {
+        $config = JComponentHelper::getParams($this->option);
         $db =& $this->getDbo();
         $query = $db->getQuery(true);
         $query
@@ -22,6 +23,13 @@ class RwnewsModelArticles extends ListModel
             ->leftJoin("`#__rwnews_categories` c on c.id = n.catID")
             ->leftJoin("`#__users` u on u.id = n.authorID")
             ->where("n.published = 1");
+
+        //Отрезаем превью
+        if ((bool) $config->get('show_prev')) {
+            $length = (int) $config->get('prev_length', 0);
+            $check = $length - 3;
+            $query->select("IF(LENGTH(fnStripTags(n.text)) > {$check},substring(fnStripTags(n.text),1,{$length}),fnStripTags(n.text)) as `prev`");
+        }
 
         //Фильтр по категории
         if ($this->categoryID > 0) {
@@ -36,16 +44,40 @@ class RwnewsModelArticles extends ListModel
         $items = parent::getItems();
         $result = array();
         if (empty($items)) return $result;
-        $itemID = RwHelper::getMenuItemId('article');
+        $config = JComponentHelper::getParams($this->option);
+        $itemID = RwHelper::getMenuItemId('article', $this->option);
         foreach ($items as $item) {
             $arr = array();
-            $arr['id'] = $item['id'];
-            $arr['img'] = $item->img_prev;
+            $arr['id'] = $item->id;
             $url = JRoute::_("index.php?option=com_rwnews&amp;view=article&amp;id={$item->id}&amp;Itemid={$itemID}");
+            $arr['url'] = $url;
+            $arr['img'] = $item->img_prev;
+            $arr['alt'] = $item->title;
             $arr['title'] = JHtml::link($url, $item->title);
+
+            //Отрезаем превью
+            if ((bool) $config->get('show_prev')) {
+                $words = explode(" ", $item->prev);
+                if (count($words) > 2) {
+                    $words[count($words) - 2] .= "...";
+                    unset($words[count($words) - 1]);
+                    $arr['prev'] = implode(" ", $words);
+                }
+                else {
+                    $arr['prev'] = $item->prev;
+                }
+            }
             $result[] = $arr;
         }
         return $result;
+    }
+
+    public function getCategoryTitle(): string
+    {
+        if ($this->categoryID === 0) return '';
+        $table = $this->getTable('Categories', 'TableRwnews');
+        $table->load($this->categoryID);
+        return $table->title ?? '';
     }
 
     public function getCategoryID(): int
