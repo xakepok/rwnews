@@ -16,7 +16,7 @@ class RwnewsViewArticle extends HtmlView
 
     private function prepare(): void
     {
-        if ($this->item->id == null) {
+        if ($this->item->id == null || $this->item->published !== '1') {
             $this->_layout = 'error';
             return;
         }

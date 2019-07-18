@@ -16,6 +16,7 @@ class RwnewsModelArticle extends AdminModel {
     public function getItem($pk = null)
     {
         $item = parent::getItem($pk);
+
         if ($item->id != null) {
             $item->stations = array_unique(RwnewsHelper::getNewsStations($item->id ?? 0));
             $item->directions = array_unique(RwnewsHelper::getNewsDirections($item->id ?? 0));
@@ -50,7 +51,7 @@ class RwnewsModelArticle extends AdminModel {
     public function save($data)
     {
         $result = parent::save($data);
-        $id = $data['id'] ?? JFactory::getDbo()->insertid();
+        $id = $data['id'] ?? $this->_db->insertid();
         $s1 = $this->saveStations($id, $data['stations'] ?? array());
         $s2 = $this->saveDirections($id, $data['directions'] ?? array());
         return $result && $s1 && $s2;
