@@ -8,9 +8,6 @@ HTMLHelper::_('stylesheet', 'com_rwnews/style.css', array('version' => 'auto', '
 $width = RwnewsHelper::getParam('prev_img_width', 100);
 $height = RwnewsHelper::getParam('prev_img_height', 70);
 ?>
-<pre>
-<?php var_dump($this->items);?>
-</pre>
 <h4><?php echo ($this->categoryID > 0) ? $this->categoryTitle : JText::sprintf('COM_RWNEWS_TITLE_LATEST_NEWS');?></h4>
 <?php
 for ($i = 0; $i < count($this->items); $i++): ?>
