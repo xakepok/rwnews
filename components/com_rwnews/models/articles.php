@@ -22,7 +22,8 @@ class RwnewsModelArticles extends ListModel
             ->from("`#__rwnews_news` n")
             ->leftJoin("`#__rwnews_categories` c on c.id = n.catID")
             ->leftJoin("`#__users` u on u.id = n.authorID")
-            ->where("n.published = 1");
+            ->where("n.published = 1")
+            ->order("n.dat desc");
 
         //Отрезаем превью
         if ((bool) $config->get('show_prev')) {

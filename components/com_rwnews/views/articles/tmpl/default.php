@@ -8,12 +8,14 @@ HTMLHelper::_('stylesheet', 'com_rwnews/style.css', array('version' => 'auto', '
 $width = RwnewsHelper::getParam('prev_img_width', 100);
 $height = RwnewsHelper::getParam('prev_img_height', 70);
 ?>
+<pre>
+<?php var_dump($this->items);?>
+</pre>
 <h4><?php echo ($this->categoryID > 0) ? $this->categoryTitle : JText::sprintf('COM_RWNEWS_TITLE_LATEST_NEWS');?></h4>
 <?php
 for ($i = 0; $i < count($this->items); $i++): ?>
     <div class="row">
         <?php for($j = 0; $j < 2; $j++): ?>
-            <?php if (!isset($this->items[$i])) continue;?>
             <div class="col-lg-6">
                 <div class="media">
                     <?php if (!RwnewsHelper::isMobile()): ?>
@@ -28,7 +30,7 @@ for ($i = 0; $i < count($this->items); $i++): ?>
                     </div>
                 </div>
             </div>
-            <?php $i++;?>
+            <?php if ($j == 0) $i++;?>
         <?php endfor;?>
     </div>
 <?php endfor;?>
