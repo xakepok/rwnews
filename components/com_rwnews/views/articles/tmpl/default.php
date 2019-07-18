@@ -15,12 +15,7 @@ for ($i = 0; $i < count($this->items); $i++): ?>
         <?php for($j = 0; $j < 2; $j++): ?>
             <div class="col-lg-6">
                 <div class="media">
-                    <?php if (!RwnewsHelper::isMobile()): ?>
-                        <img src="<?php echo $this->items[$i]['img'];?>" alt="<?php echo $this->items[$i]['alt'];?>" class="align-self-top mr-3" height="<?php echo $height;?>" />
-                    <?php endif;?>
-                    <?php if (RwnewsHelper::isMobile()): ?>
-                        <img src="<?php echo $this->items[$i]['img'];?>" alt="<?php echo $this->items[$i]['alt'];?>" class="align-self-top mr-3" width="<?php echo $width;?>" />
-                    <?php endif;?>
+                    <img src="<?php echo $this->items[$i]['img'];?>" alt="<?php echo $this->items[$i]['alt'];?>" class="align-self-top mr-3" width="<?php echo $width;?>" />
                     <div class="media-body">
                         <h6 class="mt-0"><?php echo $this->items[$i]['title'];?></h6>
                         <?php echo $this->items[$i]['prev'];?>
