@@ -7,6 +7,9 @@ $listDirn    = $this->escape($this->state->get('list.direction'));
     <th style="width: 1%;">
         <?php echo JHtml::_('grid.checkall'); ?>
     </th>
+    <th style="width: 5%;">
+        <?php echo JHtml::_('grid.sort', 'JSTATUS', 'n.published', $listDirn, $listOrder); ?>
+    </th>
     <th>
         <?php echo JHtml::_('searchtools.sort', 'COM_RWNEWS_HEAD_TITLE', 'n.title', $listDirn, $listOrder); ?>
     </th>
