@@ -82,7 +82,7 @@ class RwnewsModelArticles extends ListModel
     }
 
     /* Сортировка по умолчанию */
-    protected function populateState($ordering = 'n.title', $direction = 'asc')
+    protected function populateState($ordering = 'n.dat', $direction = 'desc')
     {
         $search = $this->getUserStateFromRequest($this->context . '.filter.search', 'filter_search');
         $this->setState('filter.search', $search);

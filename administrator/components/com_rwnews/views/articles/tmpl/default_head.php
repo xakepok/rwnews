@@ -14,7 +14,7 @@ $listDirn    = $this->escape($this->state->get('list.direction'));
         <?php echo JHtml::_('searchtools.sort', 'COM_RWNEWS_HEAD_TITLE', 'n.title', $listDirn, $listOrder); ?>
     </th>
     <th>
-        <?php echo JHtml::_('searchtools.sort', 'COM_RWNEWS_HEAD_DATE', 'n.date', $listDirn, $listOrder); ?>
+        <?php echo JHtml::_('searchtools.sort', 'COM_RWNEWS_HEAD_DATE', 'n.dat', $listDirn, $listOrder); ?>
     </th>
     <th>
         <?php echo JHtml::_('searchtools.sort', 'COM_RWNEWS_HEAD_CATEGORY', 'category', $listDirn, $listOrder); ?>
