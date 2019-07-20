@@ -34,6 +34,17 @@
                >
             <option value="">COM_RWNEWS_FILTER_SELECT_CATEGORY</option>
         </field>
+        <field name="themeID"
+               type="theme"
+               label="COM_RWNEWS_FORM_ARTICLE_THEME"
+               description="COM_RWNEWS_FORM_ARTICLE_THEME_DESC"
+               required="true"
+               autocomplete="off"
+               class="inputbox span-12"
+               default=""
+               >
+            <option value="">COM_RWNEWS_FILTER_SELECT_THEME</option>
+        </field>
         <field name="authorID"
                type="Authornews"
                label="COM_RWNEWS_FORM_ARTICLE_AUTHOR"

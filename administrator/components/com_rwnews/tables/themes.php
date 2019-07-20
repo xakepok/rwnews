@@ -3,26 +3,26 @@ use Joomla\CMS\Table\Table;
 
 defined('_JEXEC') or die;
 
-class TableRwnewsNews extends Table
+class TableRwnewsThemes extends Table
 {
     var $id = null;
-    var $catID = null;
-    var $authorID = null;
-    var $themeID = null;
     var $title = null;
-    var $text = null;
-    var $dat = null;
-    var $date_start = null;
-    var $date_end = null;
-    var $img_prev = null;
-    var $img_full = null;
-    var $link_original = null;
-    var $link_group = null;
+    var $authorID = null;
     var $published = null;
 	public function __construct(JDatabaseDriver $db)
 	{
-		parent::__construct('#__rwnews_news', 'id', $db);
+		parent::__construct('#__rwnews_themes', 'id', $db);
 	}
+
+    public function bind($src, $ignore = array())
+    {
+        foreach ($src as $field => $value)
+        {
+            if (isset($this->$field)) $this->$field = $value;
+        }
+        return parent::bind($src, $ignore);
+    }
+
     public function store($updateNulls = true)
     {
         return parent::store($updateNulls);

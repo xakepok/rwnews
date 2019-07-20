@@ -20,6 +20,15 @@
             <option value="">COM_RWNEWS_FILTER_SELECT_CATEGORY</option>
         </field>
         <field
+                name="theme"
+                type="Theme"
+                label="COM_RWNEWS_FILTER_SELECT_THEME"
+                description="COM_RWNEWS_FILTER_SELECT_THEME_DESC"
+                onchange="this.form.submit();"
+                >
+            <option value="">COM_RWNEWS_FILTER_SELECT_THEME_DESC</option>
+        </field>
+        <field
                 name="author"
                 type="Author"
                 label="COM_RWNEWS_FILTER_SELECT_AUTHOR"
