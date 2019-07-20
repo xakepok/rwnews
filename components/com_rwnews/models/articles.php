@@ -22,7 +22,7 @@ class RwnewsModelArticles extends ListModel
             ->from("`#__rwnews_news` n")
             ->leftJoin("`#__rwnews_categories` c on c.id = n.catID")
             ->leftJoin("`#__users` u on u.id = n.authorID")
-            ->where("n.published = 1")
+            ->where("(n.published = 1 and ((n.date_start is null or n.date_start < current_timestamp) and (n.date_end is null or n.date_end > current_timestamp)))")
             ->order("n.dat desc");
 
         //Отрезаем превью

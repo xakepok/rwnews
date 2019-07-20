@@ -59,8 +59,23 @@
                class="inputbox span-12"
                multiple="true"
                />
-        <field
-                name="published"
+    </fieldset>
+    <fieldset name="publish" label="COM_RWNEWS_FORM_ARTICLE_PUBLISH_LABEL" description="COM_RWNEWS_FORM_ARTICLE_PUBLISH_DESC">
+        <field name="date_start"
+               type="calendar"
+               label="COM_RWNEWS_FORM_ARTICLE_DATE_START"
+               description="COM_RWNEWS_FORM_ARTICLE_DATE_START_DESC"
+               default=""
+               class="span-12"
+               />
+        <field name="date_end"
+               type="calendar"
+               label="COM_RWNEWS_FORM_ARTICLE_DATE_END"
+               description="COM_RWNEWS_FORM_ARTICLE_DATE_END_DESC"
+               default=""
+               class="span-12"
+               />
+        <field name="published"
                 type="list"
                 label="JSTATUS"
                 description="JFIELD_PUBLISHED_DESC"

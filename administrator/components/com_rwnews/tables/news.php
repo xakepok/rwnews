@@ -11,6 +11,8 @@ class TableRwnewsNews extends Table
     var $title = null;
     var $text = null;
     var $dat = null;
+    var $date_start = null;
+    var $date_end = null;
     var $img_prev = null;
     var $img_full = null;
     var $link_original = null;
