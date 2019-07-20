@@ -21,6 +21,9 @@ class RwnewsModelArticle extends AdminModel {
             $item->stations = array_unique(RwnewsHelper::getNewsStations($item->id ?? 0));
             $item->directions = array_unique(RwnewsHelper::getNewsDirections($item->id ?? 0));
         }
+        else {
+            $item->authorID = JFactory::getUser()->id;
+        }
         return $item;
     }
 
@@ -42,7 +45,6 @@ class RwnewsModelArticle extends AdminModel {
         if (empty($data))
         {
             $data = $this->getItem();
-            $data->authorID = JFactory::getUser()->id;
         }
 
         return $data;
