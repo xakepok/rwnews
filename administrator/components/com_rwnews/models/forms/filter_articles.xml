@@ -27,6 +27,7 @@
                 onchange="this.form.submit();"
                 >
             <option value="">COM_RWNEWS_FILTER_SELECT_THEME_DESC</option>
+            <option value="0">COM_RWNEWS_NO_THEME</option>
         </field>
         <field
                 name="author"
@@ -58,6 +59,8 @@
             <option value="author DESC">COM_RWNEWS_SORT_AUTHOR_DESC</option>
             <option value="n.published ASC">COM_RWNEWS_SORT_PUBLISHED_ASC</option>
             <option value="n.published DESC">COM_RWNEWS_SORT_PUBLISHED_DESC</option>
+            <option value="t.title ASC">COM_RWNEWS_SORT_THEME_ASC</option>
+            <option value="t.title DESC">COM_RWNEWS_SORT_THEME_DESC</option>
             <option value="n.id ASC">COM_RWNEWS_SORT_ID_ASC</option>
             <option value="n.id DESC">COM_RWNEWS_SORT_ID_DESC</option>
         </field>

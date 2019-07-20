@@ -10,7 +10,7 @@ HTMLHelper::_('stylesheet', 'com_rwnews/style.css', array('version' => 'auto', '
 ?>
 <script type="text/javascript">
     Joomla.submitbutton = function (task) {
-        if (task === 'category.cancel' || document.formvalidator.isValid(document.id('adminForm'))) {*/
+        if (task === 'theme.cancel' || document.formvalidator.isValid(document.id('adminForm'))) {*/
             Joomla.submitform(task, document.getElementById('adminForm'));
         }
     }
@@ -21,7 +21,7 @@ HTMLHelper::_('stylesheet', 'com_rwnews/style.css', array('version' => 'auto', '
         <div class="span12 form-horizontal">
             <?php echo JHtml::_('bootstrap.startTabSet', 'myTab', array('active' => 'general')); ?>
             <div class="tab-content">
-                <?php echo JHtml::_('bootstrap.addTab', 'myTab', 'general', JText::sprintf('COM_RWNEWS_BLANK_CATEGORY')); ?>
+                <?php echo JHtml::_('bootstrap.addTab', 'myTab', 'general', JText::sprintf('COM_RWNEWS_MENU_ADD_THEME')); ?>
                 <div class="row-fluid">
                     <div class="span6">
                         <div>

@@ -38,7 +38,6 @@
                type="theme"
                label="COM_RWNEWS_FORM_ARTICLE_THEME"
                description="COM_RWNEWS_FORM_ARTICLE_THEME_DESC"
-               required="true"
                autocomplete="off"
                class="inputbox span-12"
                default=""

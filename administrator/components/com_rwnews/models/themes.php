@@ -3,20 +3,17 @@ use Joomla\CMS\MVC\Model\ListModel;
 
 defined('_JEXEC') or die;
 
-class RwnewsModelArticles extends ListModel
+class RwnewsModelThemes extends ListModel
 {
     public function __construct($config = array())
     {
         if (empty($config['filter_fields']))
         {
             $config['filter_fields'] = array(
-                'n.id',
-                'n.title',
-                'category',
-                'n.dat',
-                'n.published',
-                'author',
-                't.title', 'theme',
+                'id',
+                'title',
+                'author', 'u.name',
+                'published'
             );
         }
         parent::__construct($config);
@@ -27,46 +24,23 @@ class RwnewsModelArticles extends ListModel
         $db =& $this->getDbo();
         $query = $db->getQuery(true);
         $query
-            ->select("n.id, n.title, n.dat, n.published")
-            ->select("c.title as category")
-            ->select("t.title as theme")
+            ->select("t.id, t.title, t.published")
             ->select("u.name as author")
-            ->from("`#__rwnews_news` n")
-            ->leftJoin("`#__rwnews_categories` c on c.id = n.catID")
-            ->leftJoin("`#__rwnews_themes` t on t.id = n.themeID")
-            ->leftJoin("`#__users` u on u.id = n.authorID");
+            ->from("`#__rwnews_themes` t")
+            ->leftJoin("`#__users` u on u.id = t.authorID");
 
         /* Фильтр */
         $search = $this->getState('filter.search');
         if (!empty($search)) {
             $search = $db->q("%{$search}%");
-            $query->where("`n`.`title` LIKE {$search}");
-        }
-
-        //Фильтр по категории
-        $category = $this->getState('filter.category');
-        if (is_numeric($category)) {
-            $category = $db->q($category);
-            $query->where("n.catID = {$category}");
-        }
-
-        //Фильтр по теме
-        $theme = $this->getState('filter.theme');
-        if (is_numeric($theme)) {
-            if ($theme == 0) {
-                $query->where("n.themeID is null");
-            }
-            else {
-                $theme = $db->q($theme);
-                $query->where("n.themeID = {$theme}");
-            }
+            $query->where("t.title LIKE {$search}");
         }
 
         //Фильтр по автору
         $author = $this->getState('filter.author');
         if (is_numeric($author)) {
             $author = $db->q($author);
-            $query->where("n.authorID = {$author}");
+            $query->where("t.authorID = {$author}");
         }
 
         /* Сортировка */
@@ -85,12 +59,9 @@ class RwnewsModelArticles extends ListModel
         foreach ($items as $item) {
             $arr = array();
             $arr['id'] = $item->id;
-            $url = JRoute::_("index.php?option=com_rwnews&amp;task=article.edit&amp;id={$item->id}");
+            $url = JRoute::_("index.php?option=com_rwnews&amp;task=theme.edit&amp;id={$item->id}");
             $arr['title'] = JHtml::link($url, $item->title);
-            $arr['category'] = $item->category;
-            $arr['theme'] = $item->theme ?? JText::sprintf('COM_RWNEWS_NO_THEME');
             $arr['author'] = $item->author;
-            $arr['dat'] = JDate::getInstance($item->dat)->format("d.m.Y H:i");
             $arr['published'] = (bool) $item->published;
             $result[] = $arr;
         }
@@ -98,14 +69,10 @@ class RwnewsModelArticles extends ListModel
     }
 
     /* Сортировка по умолчанию */
-    protected function populateState($ordering = 'n.dat', $direction = 'desc')
+    protected function populateState($ordering = 'title', $direction = 'asc')
     {
         $search = $this->getUserStateFromRequest($this->context . '.filter.search', 'filter_search');
         $this->setState('filter.search', $search);
-        $category = $this->getUserStateFromRequest($this->context . '.filter.category', 'filter_category');
-        $this->setState('filter.category', $category);
-        $theme = $this->getUserStateFromRequest($this->context . '.filter.theme', 'filter_theme');
-        $this->setState('filter.theme', $theme);
         $author = $this->getUserStateFromRequest($this->context . '.filter.author', 'filter_author');
         $this->setState('filter.author', $author);
         parent::populateState($ordering, $direction);
@@ -114,8 +81,6 @@ class RwnewsModelArticles extends ListModel
     protected function getStoreId($id = '')
     {
         $id .= ':' . $this->getState('filter.search');
-        $id .= ':' . $this->getState('filter.category');
-        $id .= ':' . $this->getState('filter.theme');
         $id .= ':' . $this->getState('filter.author');
         return parent::getStoreId($id);
     }

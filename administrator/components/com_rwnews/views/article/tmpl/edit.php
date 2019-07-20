@@ -15,7 +15,7 @@ HTMLHelper::_('stylesheet', 'com_rwnews/style.css', array('version' => 'auto', '
         }
     }
 </script>
-<form action="<?php echo $action; ?>"
+<form action="<?php echo RwnewsHelper::getActionUrl(); ?>"
       method="post" name="adminForm" id="adminForm" xmlns="http://www.w3.org/1999/html" class="form-validate">
     <div class="row-fluid">
         <div class="span12 form-horizontal">
