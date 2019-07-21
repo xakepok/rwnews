@@ -9,6 +9,7 @@ class RwnewsModelArticles extends ListModel
     {
         $input = JFactory::getApplication()->input;
         $this->categoryID = $input->getInt('categoryID', 0);
+        $this->themeID = $input->getInt('themeID', 0);
         parent::__construct($config);
     }
 
@@ -35,6 +36,11 @@ class RwnewsModelArticles extends ListModel
         //Фильтр по категории
         if ($this->categoryID > 0) {
             $query->where("n.catID = {$this->categoryID}");
+        }
+
+        //Фильтр по категории
+        if ($this->themeID > 0) {
+            $query->where("n.themeID = {$this->themeID}");
         }
 
         return $query;
@@ -86,5 +92,5 @@ class RwnewsModelArticles extends ListModel
         return $this->categoryID;
     }
 
-    private $categoryID;
+    private $categoryID, $themeID;
 }

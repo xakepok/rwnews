@@ -28,6 +28,11 @@ class RwnewsModelArticle extends ItemModel
         if ($table->link_group != null) {
             $links['group'] = array('url' => $table->link_group, 'text' => JText::sprintf('COM_RWNEWS_ARTICLE_LINK_GROUP'));
         }
+        if ($table->themeID !== null && $table->theme !== null) {
+            $itemID = RwHelper::getMenuItemId('news', $this->option);
+            $url = JRoute::_("index.php?option=com_rwnews&amp;view=articles&amp;themeID={$table->themeID}&amp;Itemid={$itemID}");
+            $table->other = JHtml::link($url, JText::sprintf('COM_RWNEWS_ARTICLE_LINK_OTHER_IN_THEME', strtolower($table->theme)));
+        }
         $table->links = $links;
         $table->assets = $this->getAssets();
         return $table;
@@ -52,6 +57,7 @@ class RwnewsModelArticle extends ItemModel
                 'text' => JText::sprintf('COM_RWNEWS_ARTICLE_LINK_DIRECTION_NAME', $direction['title'])
             );
         }
+
         return $assets;
     }
 

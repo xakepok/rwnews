@@ -7,6 +7,7 @@ class TableRwnewsRwnews extends Table
 {
     var $id = null;
     var $catID = null;
+    var $themeID = null;
     var $authorID = null;
     var $title = null;
     var $text = null;
@@ -17,6 +18,7 @@ class TableRwnewsRwnews extends Table
     var $link_group = null;
     var $published = null;
     var $category = null;
+    var $theme = null;
     var $user = null;
 	public function __construct(JDatabaseDriver $db)
 	{

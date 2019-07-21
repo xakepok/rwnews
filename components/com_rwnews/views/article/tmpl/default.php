@@ -19,7 +19,10 @@ HTMLHelper::_('stylesheet', 'com_rwnews/style.css', array('version' => 'auto', '
             <div style="word-wrap: break-word;"><?php echo $this->item->text;?></div>
         </div>
         <div class="row">
-            <div class="col xs-12">
+            <div class="col-lg-8 xs-12">
+                <?php echo $this->item->other;?>
+            </div>
+            <div class="col-lg-4 xs-12">
                 <?php echo $this->loadTemplate('links');?>
             </div>
         </div>

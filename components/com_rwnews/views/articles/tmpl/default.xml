@@ -16,6 +16,15 @@
 					>
 				<option value="">COM_RWNEWS_MENU_ARTICLES_FILTER_CATEGORY_ALL</option>
 			</field>
+			<field
+					name="themeID"
+					type="Theme"
+					default=""
+					label="COM_RWNEWS_MENU_ARTICLES_FILTER_THEME"
+					description="COM_RWNEWS_MENU_ARTICLES_FILTER_THEME_DESC"
+					>
+				<option value="">COM_RWNEWS_MENU_ARTICLES_FILTER_THEME_ALL</option>
+			</field>
 		</fields>
 	</fieldset>
 </metadata>
